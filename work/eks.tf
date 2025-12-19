@@ -23,7 +23,11 @@ resource "aws_eks_cluster" "mt_eks" {
   role_arn = aws_iam_role.eks_cluster_role.arn
 
   vpc_config {
-    subnet_ids = data.terraform_remote_state.base.outputs.eks_private_subnet_ids
+    # 그냥 같은 디렉토리 안에 있는 subnet 리소스를 직접 참조
+    subnet_ids = [
+      aws_subnet.mt-private-subnet-2a.id,
+      aws_subnet.mt-private-subnet-2c.id
+    ]
 
     endpoint_private_access = true #VPC 내부에서도 접근 가능하게 설정 (보통 둘 다 true로 둠)
     endpoint_public_access  = true # 클러스터 API 서버를 퍼블릭에서 접근 가능하게 설정

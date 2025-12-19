@@ -23,3 +23,12 @@ output "eks_private_subnet_ids" {
 output "eks_bastion_sg_id" {
   value = aws_security_group.eks-bastion_sg.id
 }
+
+output "aws_eks_cluster" {
+  value = aws_eks_cluster.mt_eks.name
+}
+
+output "node_role_arn" {
+  value = aws_iam_role.node_role.arn
+  
+}

@@ -26,8 +26,10 @@ resource "aws_eks_node_group" "mt_nodegroup" {
   cluster_name    = aws_eks_cluster.mt_eks.name
   node_group_name = "mt-nodegroup"
   node_role_arn  = aws_iam_role.node_role.arn
-  subnet_ids = data.terraform_remote_state.base.outputs.eks_private_subnet_ids
-
+ subnet_ids = [
+    aws_subnet.mt-private-subnet-2a.id,
+    aws_subnet.mt-private-subnet-2c.id
+  ]
   scaling_config {
     desired_size = 2
     min_size     = 1
