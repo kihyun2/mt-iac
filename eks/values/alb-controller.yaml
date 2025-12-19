@@ -1,9 +1,0 @@
-clusterName: mt-eks
-
-region: ap-northeast-2
-
-v: 2
-
-serviceAccount:
-  create: false
-  name: aws-load-balancer-controller

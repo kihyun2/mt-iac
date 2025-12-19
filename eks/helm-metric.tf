@@ -5,13 +5,18 @@ resource "helm_release" "metrics_server" {
   repository = "https://kubernetes-sigs.github.io/metrics-server/"
   chart      = "metrics-server"
 
-  values = [
-    file("${path.module}/values/metrics-server.yaml")
-  ]
-    depends_on = [
-    kubernetes_service_account.alb,
-    aws_iam_role.alb_controller,
-    kubernetes_config_map.aws_auth
+  set {
+    name  = "args[0]"
+    value = "--kubelet-insecure-tls"
+  }
+
+  set {
+    name  = "args[1]"
+    value = "--kubelet-preferred-address-types=InternalIP"
+  }
+  
+  depends_on = [
+    aws_eks_node_group.mt_nodegroup
   ]
 }
 

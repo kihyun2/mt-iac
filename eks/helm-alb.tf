@@ -5,13 +5,32 @@ resource "helm_release" "alb_controller" {
   repository = "https://aws.github.io/eks-charts"
   chart      = "aws-load-balancer-controller"
 
-  values = [
-    file("${path.module}/values/alb-controller.yaml")
-  ]
+  set {
+    name  = "clusterName"
+    value = data.aws_eks_cluster.mt_eks.name
+  }
+
+  set {
+    name  = "region"
+    value = "ap-northeast-2"
+  }
+
+  set {
+    name  = "vpcId"
+    value = data.terraform_remote_state.base.outputs.vpc_id
+  }
+
+  set {
+    name  = "serviceAccount.create"
+    value = "false"
+  }
+
+  set {
+    name  = "serviceAccount.name"
+    value = "aws-load-balancer-controller"
+  }
 
   depends_on = [
-    kubernetes_service_account.alb,
-    aws_iam_role.alb_controller,
-    kubernetes_config_map.aws_auth
+    aws_eks_node_group.mt_nodegroup
   ]
 }

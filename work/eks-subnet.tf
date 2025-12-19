@@ -10,6 +10,7 @@ resource "aws_subnet" "mt-private-subnet-2a" {
   tags = {
     Name                     = "mt-private-subnet-2a"
     "kubernetes.io/role/internal-elb" = "1"
+    "kubernetes.io/cluster/mt-eks"    = "shared"
   }
 }
 
@@ -21,5 +22,6 @@ resource "aws_subnet" "mt-private-subnet-2c" {
   tags = {
     Name                     = "mt-private-subnet-2c"
     "kubernetes.io/role/internal-elb" = "1"
+    "kubernetes.io/cluster/mt-eks"    = "shared"
   }
 }

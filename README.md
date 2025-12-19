@@ -122,3 +122,45 @@ terraform destroy
 필요하시면 제가 원격 상태 구성 예제나 `variables.tf` / `tfvars` 템플릿을 추가해 드리겠습니다.
 # mt-iac
 # mt-iac
+
+```
+mt-iac
+├─ eks
+│  ├─ .terraform.lock.hcl
+│  ├─ access-entry.tf
+│  ├─ alb-policy.json
+│  ├─ bastion-ec2.tf
+│  ├─ data.tf
+│  ├─ helm-alb.tf
+│  ├─ helm-metric.tf
+│  ├─ iam.tf
+│  ├─ irsa-alb.tf
+│  ├─ oidc.tf
+│  ├─ provider.tf
+│  ├─ sa-alb.tf
+│  └─ values
+│     ├─ alb-controller.yaml
+│     └─ metrics-server.yaml
+├─ README.md
+├─ state
+│  ├─ .terraform.lock.hcl
+│  ├─ ebs.tf
+│  └─ provider.tf
+└─ work
+   ├─ .terraform.lock.hcl
+   ├─ ec.tf
+   ├─ eks-subnet.tf
+   ├─ eks.tf
+   ├─ igw.tf
+   ├─ main.tf
+   ├─ nat.tf
+   ├─ nodegroup.tf
+   ├─ output.tf
+   ├─ private-sg.tf
+   ├─ provider.tf
+   ├─ rt.tf
+   ├─ sg.tf
+   ├─ subnet-01.tf
+   └─ vpc.tf
+
+```

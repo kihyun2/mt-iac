@@ -29,6 +29,7 @@ resource "aws_subnet" "mt-public-subnet-2a" {
     Name       = "mt-public-subnet-2a"
     created-by = "terraform"
     service    = "bastion-argocd-monitoring"
+    "kubernetes.io/cluster/mt-eks"    = "shared"
   }
 }
 
